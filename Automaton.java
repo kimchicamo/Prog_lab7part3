@@ -48,28 +48,30 @@ public class Automaton
     /**
      * Update the automaton to its next state.
      */
-    public void update()
-    {
+    //Q31
+    public void update() {
         // Build the new state in a separate array.
-        /*int[] nextState = new int[state.length]; 
-         * this code when its not there in Q 29 
-         * makes changes in the pattern.its only one line that goes down.
-         */
-        // Naively update the state of each cell
-        // based on the state of its two neighbors.
-        //Q30 
-        for (int i = state.length - 1; i >= 0; i--) {
-           int left, center, right;
+        int[] nextState = new int[state.length];
+    
+        // Initialize the left and center variables for the first iteration
+        int left = 0;
+        int center = state[0];
+    
+        // Loop through each cell in the state array
+        for (int i = 0; i < state.length; i++) {
+          // Determine the right neighbor (handle the last cell by setting right to 0)
+          int right = (i + 1 < state.length) ? state[i + 1] : 0;
         
-           // Handle left, center, right values using ternary operators
-           left = (i == 0) ? 0 : state[i - 1]; // Left neighbor or 0 if it's the first cell
-           center = state[i]; // Current cell
-           right = (i + 1 < state.length) ? state[i + 1] : 0; // Right neighbor or 0 if it's the last cell
+          // Calculate the next state of the current cell based on its neighbors
+          nextState[i] = (left + center + right) % 2;
         
-           // Update the current cell in place
-           state[i] = (left + center + right) % 2;
+          // Update the left and center for the next iteration
+          left = center;
+          center = right;
         }
-        
+    
+         // Assign the nextState array to the state array
+         state = nextState;
     }
     
     /**
