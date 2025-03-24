@@ -27,8 +27,10 @@ public class Automaton
             state[i] = initialState[i];
         }
     }
-    
-    
+    //Q32
+    public int calculateNextState(int left, int center, int right) {
+        return (left + center + right) % 2;
+    }
     /**
      * Print the current state of the automaton.
      */
@@ -48,31 +50,32 @@ public class Automaton
     /**
      * Update the automaton to its next state.
      */
-    //Q31
+    //Q31,32
     public void update() {
         // Build the new state in a separate array.
         int[] nextState = new int[state.length];
-    
+        
         // Initialize the left and center variables for the first iteration
         int left = 0;
         int center = state[0];
-    
+        
         // Loop through each cell in the state array
         for (int i = 0; i < state.length; i++) {
-          // Determine the right neighbor (handle the last cell by setting right to 0)
-          int right = (i + 1 < state.length) ? state[i + 1] : 0;
-        
-          // Calculate the next state of the current cell based on its neighbors
-          nextState[i] = (left + center + right) % 2;
-        
-          // Update the left and center for the next iteration
-          left = center;
-          center = right;
+            // Determine the right neighbor (handle the last cell by setting right to 0)
+            int right = (i + 1 < state.length) ? state[i + 1] : 0;
+            
+            // Use the calculateNextState method to get the new state for the current cell
+            nextState[i] = calculateNextState(left, center, right);
+            
+            // Update the left and center for the next iteration
+            left = center;
+            center = right;
         }
-    
-         // Assign the nextState array to the state array
-         state = nextState;
+        
+        // Assign the nextState array to the state array
+        state = nextState;
     }
+
     
     /**
      * Reset the automaton.
