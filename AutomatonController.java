@@ -10,14 +10,16 @@ public class AutomatonController
     private Automaton auto;
     //25 yes the patterns are the same.
     //26 i dont undrestand 
-    
+
     /**
      * Create an AutomatonController.
      * @param numberOfCells The number of cells in the automaton.
      */
     public AutomatonController(int numberOfCells)
     {
-        auto = new Automaton(numberOfCells);
+        int[] initialState = new int[numberOfCells];
+        initialState[numberOfCells / 2] = 1;
+        auto = new Automaton(numberOfCells, initialState);
         auto.print();
     }
     

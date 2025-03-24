@@ -23,7 +23,7 @@ public class Automaton
         state = new int[numberOfCells];
         // Seed the automaton with a single 'on' cell in the middle.
         //Q27
-        for (int i = 0; i < initialState.length && i < numberOfCells; i++) {
+        for (int i = 0; i < Math.min(initialState.length, numberOfCells); i++) {
             state[i] = initialState[i];
         }
     }
