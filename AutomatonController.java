@@ -8,6 +8,8 @@ public class AutomatonController
 {
     // The automaton.
     private Automaton auto;
+    //25 yes the patterns are the same.
+    //26 i dont undrestand 
     
     /**
      * Create an AutomatonController.

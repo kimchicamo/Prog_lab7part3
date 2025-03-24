@@ -17,13 +17,17 @@ public class Automaton
      * Create a 1D automaton consisting of the given number of cells.
      * @param numberOfCells The number of cells in the automaton.
      */
-    public Automaton(int numberOfCells)
+    public Automaton(int numberOfCells, int[] initialState)
     {
         this.numberOfCells = numberOfCells;
         state = new int[numberOfCells];
         // Seed the automaton with a single 'on' cell in the middle.
-        state[numberOfCells / 2] = 1;
+        //Q27
+        for (int i = 0; i < initialState.length && i < numberOfCells; i++) {
+            state[i] = initialState[i];
+        }
     }
+    
     
     /**
      * Print the current state of the automaton.
