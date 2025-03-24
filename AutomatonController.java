@@ -17,6 +17,7 @@ public class AutomatonController
      */
     public AutomatonController(int numberOfCells)
     {
+        //Q27 
         int[] initialState = new int[numberOfCells];
         initialState[numberOfCells / 2] = 1;
         auto = new Automaton(numberOfCells, initialState);
